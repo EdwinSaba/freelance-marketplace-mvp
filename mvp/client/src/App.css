@@ -1,0 +1,194 @@
+/* --- 1. THE OVERFLOW FIX (Universal Reset) --- */
+* {
+  box-sizing: border-box; /* Ensures padding doesn't push elements out */
+}
+
+:root {
+  --bg: #0b0e14;
+  --surface: #161b22;
+  --border: #30363d;
+  --primary: #58a6ff;
+  --success: #238636;
+  --danger: #da3633;
+  --text: #c9d1d9;
+  --text-muted: #8b949e;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.App {
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+/* --- HEADER AREA --- */
+.header-area {
+  display: flex;
+  flex-direction: row;      /* Ensures horizontal layout */
+  align-items: center;
+  width: 100%;              /* Normal width */
+  margin-bottom: 40px;
+  padding: 0 40px 20px 40px;
+  border-bottom: 1px solid var(--border);
+  position: relative;       /* For absolute positioning of nav */
+}
+
+/* --- TITLE --- */
+.header-area h1 {
+  margin: 0 auto;           /* Center the title */
+  flex-shrink: 0;           /* Prevents title from squishing */
+}
+
+/* --- NAV PILLS (The Buttons) --- */
+.nav-pills {
+  display: flex;
+  background: var(--surface);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;           /* Prevents nav-pills from being compressed */
+  white-space: nowrap;      /* Keep pills on one line */
+  margin-left: auto;        /* Push to the right */
+  margin-right: 40px;       /* Space from right edge */
+  width: fit-content;       /* Only take up space needed */
+  position: fixed;          /* Break out of App constraint */
+  right: 40px;              /* Stick to right edge */
+  top: 41px;                /* Position below header */
+  z-index: 100;             /* Stay on top */
+}
+
+.nav-pills button {
+  background: transparent;
+  border: none;
+  padding: 10px 24px;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+  white-space: nowrap;      /* Prevents buttons from stacking vertically */
+}
+
+.nav-pills button.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* Profiles spacing */
+.profiles-bar {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-tag {
+  margin-left: 0;
+  color: var(--text-muted);
+}
+
+/* --- 3. THE "SIDEBAR" LAYOUT --- */
+.main-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr; /* Fixed sidebar width prevents squishing */
+  gap: 40px;
+  align-items: start;
+}
+
+/* --- 4. FORM CARD (Fixed the Flowing Out) --- */
+.form-card {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  position: sticky;
+  top: 20px;
+  margin-top: 8px;
+}
+
+.form-card h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+}
+
+input, textarea {
+  width: 100%; /* Now stays inside because of border-box */
+  display: block;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.95rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* --- 5. JOB LISTINGS GRID --- */
+.job-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.card:hover {
+  border-color: var(--primary);
+}
+
+.status-badge {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(35, 134, 54, 0.15);
+  color: #3fb950;
+  border: 1px solid #238636;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* --- 6. BUTTONS --- */
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-primary { background: var(--primary); color: white; width: 100%; }
+.btn-primary:hover { background: #4791e6; }
+
+.btn-danger { background: var(--danger); color: white; }
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+
+.proposal-item {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border-left: 4px solid var(--primary);
+}
+
+
